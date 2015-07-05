@@ -104,7 +104,7 @@ Meteor.publish null, ->
 # Special hook for Meteor.users to scope for each group
 userFindHook = (userId, selector, options) ->
   return true if Partitioner._directOps.get() is true
-  return true if Helpers.isDirectUserSelector(selector)
+  return true if PartitionerHelpers.isDirectUserSelector(selector)
 
   groupId = Partitioner._currentGroup.get()
   # This hook doesn't run if we're not in a method invocation or publish
@@ -195,5 +195,3 @@ TestFuncs =
   userFindHook: userFindHook
   findHook: findHook
   insertHook: insertHook
-
-

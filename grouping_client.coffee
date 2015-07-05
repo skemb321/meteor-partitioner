@@ -11,7 +11,7 @@ Partitioner.group = ->
 
 userFindHook = (userId, selector, options) ->
   # Do the usual find for no user or single selector
-  return true if !userId or Helpers.isDirectUserSelector(selector)
+  return true if !userId or PartitionerHelpers.isDirectUserSelector(selector)
 
   # No hooking needed for regular users, taken care of on server
   return true unless Meteor.user()?.admin
